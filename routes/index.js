@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var employ=require("../module/updateuser")
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
+router.put('/', employ.updateprofile);
 
 module.exports = router;
