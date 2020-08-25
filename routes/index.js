@@ -26,4 +26,10 @@ var employ=require("../module/updateuser")
 
 router.put('/update', employ.updateprofile);
 
+var user=require('../modules/login')
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+router.get('/login',user.loginUser);
 module.exports = router;
