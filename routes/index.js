@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var registration=require("../modules/registrations");
+const registrations = require('../modules/registrations');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.post('/signup',registration.userExists,registration.validatingDetails,registration.registerUser);
 
 module.exports = router;
