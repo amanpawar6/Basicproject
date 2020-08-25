@@ -17,7 +17,7 @@ async function updateprofile(req, res, next) {
         res.json({
           success:true,
           message:"emp updated successfully",
-          student:updateEmp
+          employee:updateEmp
         });
       }
       }catch(err){
