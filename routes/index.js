@@ -1,6 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var deletemodule=require("../module/deleteApi")
+var deletemodule=require("../module/deleteApi");
+const uploader = require('../module/uploadImage');
+var registration=require("../module/registrations");
+var employ=require("../module/updateuser");
+var mail=require('../module/mail');
+var user=require('../module/login');
+
 
 router.get('/delete',deletemodule.deleteApi);
 
@@ -16,21 +22,17 @@ function squaredResponse(req, res, next){
 }
 
 router.get('/square/:number', squaredResponse);
-router.get('/square/', squaredResponse);
-var registration=require("../module/registrations");
 
+router.get('/square/', squaredResponse);
 
 router.post('/signup',registration.userExists,registration.validatingDetails,registration.registerUser);
-var employ=require("../module/updateuser")
-
 
 router.put('/update/:id', employ.updateprofile);
 
-var user=require('../module/login')
-
 router.get('/login',user.loginUser);
-var mail=require('../module/mail');
 
 router.post('/mail',mail.email);
+
+router.post('/upload', uploader.upload, uploader.imageUpload); 
 
 module.exports = router;
