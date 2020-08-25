@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var deletemodule=require("../module/deleteApi")
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/delete',deletemodule.deleteApi);
 
 module.exports = router;
