@@ -10,7 +10,7 @@ function squaredResponse(req, res, next){
   let ip = req.params.number?req.params.number:req.body.number;
   let number = parseInt(ip);
   if(isNaN(number)){
-    res.status(200).send("Not a number!");
+    res.status(400).send("Not a number!");
   }
   else{
     res.status(200).send({squaredNumber:number*number});
