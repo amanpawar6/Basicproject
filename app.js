@@ -15,7 +15,7 @@ app.use(helmet());
 
 //mongo db server connection
 
-mongoose.connect('mongodb://localhost/basicProject',{ useNewUrlParser: true ,useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/basicProject',{ useNewUrlParser: true ,useUnifiedTopology: true , useFindAndModify : false});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

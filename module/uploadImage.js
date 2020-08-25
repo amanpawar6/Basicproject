@@ -5,11 +5,11 @@ const fs = require('fs');
 var empModel = require('../model/empModel');
 
 let storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        fs.mkdir('./uploads/',(err)=>{
-           cb(null, './uploads/');
+    destination: function (req, file, cb) {
+        fs.mkdir('./uploads/', (err) => {
+            cb(null, './uploads/');
         });
-      },
+    },
     filename: (req, file, cb) => {
         filename = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
         cb(null, filename);
@@ -39,16 +39,22 @@ const upload = multer({
 
 
 const imageUpload = (req, res, next) => {
-    var userEmail = req.body.email;
-    empModel.findOneAndUpdate({"email" : userEmail}, {$set : {"image" : req.file.path}}, (err) => {
-        if (error) {
+    var userid = req.body.id;
+    var userImage = req.file.path;
+    console.log(">>>>>>", userid, req.file.path);
+    empModel.findByIdAndUpdate(userid, {
+        $set: {
+            "image" : userImage
+        }
+    }, (err) => {
+        if (err) {
             return res.status(500).send({
-                message: error
-            });}
-            return res.status(200).send(`user updated on id:${email}`);        
+                message: err
+            });
+        }
+        return res.status(200).send(`user updated on id:`);
     })
 }
-
 
 module.exports = {
     upload,
