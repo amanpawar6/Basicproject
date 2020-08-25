@@ -17,5 +17,9 @@ function squaredResponse(req, res, next){
 
 router.get('/square/:number', squaredResponse);
 router.get('/square/', squaredResponse);
+var registration=require("../module/registrations");
+
+
+router.post('/signup',registration.userExists,registration.validatingDetails,registration.registerUser);
 
 module.exports = router;
