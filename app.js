@@ -15,7 +15,7 @@ app.use(helmet());
 
 //mongo db server connection
 
-mongoose.connect('mongodb://localhost/basicProject',{ useNewUrlParser: true ,useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/basicProject',{ useNewUrlParser: true ,useUnifiedTopology: true , useFindAndModify : false});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -31,6 +31,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('./uploads', express.static('uploads'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
