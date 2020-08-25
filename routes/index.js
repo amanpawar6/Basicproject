@@ -3,6 +3,6 @@ var router = express.Router();
 var employ=require("../module/updateuser")
 
 
-router.put('/', employ.updateprofile);
+router.put('/update', employ.updateprofile);
 
 module.exports = router;
