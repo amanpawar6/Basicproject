@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 function squaredResponse(req, res, next){
-  let ip = req.params.number?req.params.number:req.body.number;
+  let ip = req.params.number?req.params.number:req.body.number?req.body.number:req.query.number;
   let number = parseInt(ip);
   if(isNaN(number)){
     res.status(400).send("Not a number!");
