@@ -24,9 +24,9 @@ router.post('/signup',registration.userExists,registration.validatingDetails,reg
 var employ=require("../module/updateuser")
 
 
-router.put('/update', employ.updateprofile);
+router.put('/update/:id', employ.updateprofile);
 
-var user=require('../modules/login')
+var user=require('../module/login')
 
 router.get('/login',user.loginUser);
 var mail=require('../module/mail');

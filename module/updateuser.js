@@ -1,4 +1,4 @@
-const emp = require("../models/empModel");
+const emp = require("../model/empModel");
 
 
 async function updateprofile(req, res, next) {
