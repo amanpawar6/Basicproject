@@ -21,5 +21,9 @@ var registration=require("../module/registrations");
 
 
 router.post('/signup',registration.userExists,registration.validatingDetails,registration.registerUser);
+var employ=require("../module/updateuser")
+
+
+router.put('/update', employ.updateprofile);
 
 module.exports = router;
